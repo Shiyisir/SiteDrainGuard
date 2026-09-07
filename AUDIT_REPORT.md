@@ -2,9 +2,11 @@
 
 ## 1. Executive result
 
-**PASS for the local v0.1 implementation; PARTIAL for external release gates.**
+**Final status: READY for v0.1.0 release. Local validation: PASS. Hosted CI: PASS.**
 
-The application, real-engine calculations, tests, batch workflow, dashboard startup and documentation are complete and locally verified. Post-review local validation was rerun on 2026-09-07. GitHub-hosted CI has not been executed: the project now has its own Git repository, but the confirmed public repository Shiyisir/SiteDrainGuard exists, but GitHub rejected the push because the CLI OAuth authorization lacks workflow scope. Local equivalents pass; final release status remains PARTIAL.
+The reviewed implementation, real Heavy simulation, 19 tests, 85% coverage and Hybrid audit passed both locally and in hosted GitHub Actions. The bilingual README, real dashboard screenshot and confirmed author/repository fields are complete. The earlier OAuth push blocker was resolved by the user-authorized addition of workflow scope only.
+
+Hosted evidence: [CI run 34111256789](https://github.com/Shiyisir/SiteDrainGuard/actions/runs/34111256789), tested commit `fd3cf67319c151759fffc5ee42905969cf6f9623`. Both lint and test jobs completed successfully. Machine-readable job/step evidence is retained in `docs/evidence/hosted_ci.json`. A subsequent documentation-only release commit must also pass CI before tagging; its exact SHA is resolved by the v0.1.0 Git tag.
 
 ## 2. Environment actually tested
 
@@ -19,6 +21,8 @@ The application, real-engine calculations, tests, batch workflow, dashboard star
 - Pydantic: 2.13.5
 - Plotly: 6.9.0
 - Ruff: 0.16.6
+
+Hosted environment: Ubuntu 24.04, Python 3.11.16, PySWMM 2.1.0, swmm-toolkit 0.17.0, SWMM 5.2.4, Streamlit 1.63.0, pandas 2.3.3, Pydantic 2.13.5. [Actual run logs](https://github.com/Shiyisir/SiteDrainGuard/actions/runs/34111256789).
 
 Evidence: the final seven command logs under ignored `artifacts/release/`, `uv lock --check --offline`, and `docs/environment.md`.
 
@@ -40,7 +44,7 @@ Evidence: the final seven command logs under ignored `artifacts/release/`, `uv l
 | P0-12 | Reproducible batch CLI | PASS | `python scripts/run_demo_batch.py --rainfall moderate/heavy` |
 | P0-13 | Streamlit dashboard | PASS locally | HTTP health endpoint returned 200; dashboard code contains network, KPI, comparison, time series and QA sections |
 | P0-14 | Unit/integration tests and Ruff | PASS locally | 19 passed; coverage 85%; Ruff check and format check pass |
-| P0-15 | CI workflow | PARTIAL external | `.github/workflows/ci.yml` exists and its commands pass locally; hosted run requires a Git push |
+| P0-15 | CI workflow | PASS hosted | [Run 34111256789](https://github.com/Shiyisir/SiteDrainGuard/actions/runs/34111256789); all required steps passed |
 | P0-16 | Open-source docs and audit | PASS | README, methodology, validation, limitations, citation, notices and this report |
 
 ## 4. Commands executed
@@ -59,7 +63,7 @@ The post-review session reused the original project's existing Python environmen
 | `uv lock --check --offline` | PASS |
 | Streamlit headless and real Heavy browser analysis | PASS; screenshot in assets/dashboard.png |
 | `git diff --cached --check` and staged-file hygiene | PASS; no environment/cache/SWMM temporary outputs or detected secret values |
-| `git push -u origin main` | REJECTED by GitHub: OAuth authorization lacks workflow scope |
+| `git push -u origin main` | PASS after user-authorized workflow scope refresh; initial rejection retained in development history |
 
 Ruff initially found two formatting-only differences in app.py and scripts/audit_hybrid_synergy.py. These were formatted and the full seven-command validation passed again. No hydraulic logic or input changed.
 
@@ -110,7 +114,7 @@ All five scenarios used engine version 5.2.4, CMS/SI units, the same rainfall an
 - No `.env` file, API key, token, password or private project data found in application/docs scan.
 - Base model is copied per run and checksummed.
 - Runtime artifacts and coverage/cache directories are ignored by `.gitignore`.
-- A project-local Git repository was initialized on main; the parent workspace repository was not staged or committed. The attempted push was rejected; no branch has been published.
+- A project-local Git repository was initialized on main; the parent workspace repository was not staged or committed. main was successfully pushed to the confirmed public repository after the authorized workflow-scope refresh.
 
 ## 10. Known limitations
 
@@ -119,15 +123,13 @@ All five scenarios used engine version 5.2.4, CMS/SI units, the same rainfall an
 - Risk thresholds are internal display heuristics.
 - Rational Method is a sanity check, not proof of model correctness.
 - v0.1 is single-process/sequential and not a production multi-user service.
-- No hosted demo or remote CI run is included. The README screenshot is a real local dashboard capture.
+- No hosted dashboard deployment is included. Hosted CI passed; the README screenshot is a real local dashboard capture.
 
-## 11. Unresolved issues
+## 11. Release gates
 
-1. With user approval, grant the GitHub CLI workflow scope, then push main to https://github.com/Shiyisir/SiteDrainGuard.
-2. Verify actual hosted Actions results and retain the run URL and tested commit. No hosted run currently exists.
-3. Only after hosted CI passes, finalize the checklist and create the v0.1.0 tag and Release. Author fields, bilingual README and the real screenshot are complete.
+No unresolved v0.1 implementation or hosted-CI blocker remains. Author and repository fields are confirmed, all local commands pass, the real screenshot is included, and hosted CI is green. Final publication is gated on a clean tree and a green CI run for the documentation release commit. Release identity: Shiyisir/SiteDrainGuard, v0.1.0.
 
-Local implementation commit: `4f8035e1768118a9f4abb7d8f70e234e516a39d6`. Subsequent documentation-only commits record the push blocker. Use `git rev-parse HEAD` for the current handoff commit.
+The hosted runner emitted a non-failing Node.js runtime deprecation notice for existing upstream Actions. No workflow steps were removed or disabled; all required checks passed.
 
 ## 12. Claims allowed in README/resume
 
@@ -139,4 +141,4 @@ Do not claim real enterprise use, field validation, calibration, design-code com
 
 ## 14. Final recommendation
 
-**Ready for a local v0.1 handoff: yes. Ready for a public v0.1 tag: only after the external gates in section 11 pass.**
+**READY for v0.1.0. Preserve the synthetic/no-calibration/no-engineering-design boundaries in the release notes.**

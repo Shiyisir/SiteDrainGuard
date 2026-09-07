@@ -10,10 +10,11 @@
 - The independently audited heavy synthetic result supports the statement that S4 reduced total flood volume from **3,338.20 m³ to 2,730.55 m³ (18.20%)** in the bundled model.
 - The S4 effect is traceable to the C05–ST01–P01 bottleneck chain; the retained report evidence shows J05 flood volume falling from about **1,065 m³ to 466 m³**.
 
-## Claims to update only after hosted CI
+## Verified hosted CI
 
-- Do not state a post-review test count or Linux CI result until the strengthened GitHub Actions workflow has actually run green.
-- After hosted CI passes, update the test count/coverage from that run rather than copying the old local number automatically.
+- The post-review workflow passed **19 tests** with **85% coverage** on Ubuntu 24.04 / Python 3.11.16, including real EPA SWMM 5.2.4 environment validation, the Heavy S0–S4 batch and exact Hybrid structural audit.
+- Evidence: [CI run 34111256789](https://github.com/Shiyisir/SiteDrainGuard/actions/runs/34111256789), commit `fd3cf67319c151759fffc5ee42905969cf6f9623`.
+- The same updated source passed 19 tests with 85% coverage locally on Windows / Python 3.11.12. These are software/demo reproducibility claims, not field validation.
 
 ## Claims not supported
 

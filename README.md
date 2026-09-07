@@ -1,5 +1,7 @@
 # SiteDrainGuard
 
+[![CI](https://github.com/Shiyisir/SiteDrainGuard/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Shiyisir/SiteDrainGuard/actions/workflows/ci.yml)
+
 基于 Python、EPA SWMM 和 PySWMM 的施工场地暴雨积水与临时排水方案对比原型。
 
 SiteDrainGuard is a Python + EPA SWMM + PySWMM prototype for comparing stormwater flooding risk and temporary drainage measures on a synthetic construction site.
@@ -143,9 +145,9 @@ AUDIT_REPORT.md                 基于证据的自审计 / evidence-based self-a
 
 The model is synthetic and not calibrated. It has no survey DEM, local design-storm generator, live monitoring, uncertainty quantification, code-compliance judgement or production multi-user concurrency. Costs are user assumptions. v0.1 does not accept arbitrary user INP files.
 
-发布条件见 [`RELEASE_CHECKLIST.md`](RELEASE_CHECKLIST.md)。独立审查后的本地复验在 Windows/Python 3.11.12 上通过 19 个测试，覆盖率 85%；GitHub 托管 CI 尚待运行。
+发布条件见 [`RELEASE_CHECKLIST.md`](RELEASE_CHECKLIST.md)。独立审查后的本地复验在 Windows/Python 3.11.12 上通过 19 个测试，覆盖率 85%；GitHub 托管 CI 在 Ubuntu / Python 3.11.16 上同样通过 19 个测试、85% 覆盖率及真实 Heavy 批处理和 Hybrid audit。[运行证据](https://github.com/Shiyisir/SiteDrainGuard/actions/runs/34111256789)。
 
-The public-release gate is tracked in [`RELEASE_CHECKLIST.md`](RELEASE_CHECKLIST.md). Local post-review verification passed 19 tests with 85% coverage on Windows/Python 3.11.12. Hosted GitHub Actions remains pending.
+The public-release gate is tracked in [`RELEASE_CHECKLIST.md`](RELEASE_CHECKLIST.md). Local post-review verification passed 19 tests with 85% coverage on Windows/Python 3.11.12. Hosted GitHub Actions also passed 19 tests with 85% coverage, the real Heavy batch and Hybrid audit on Ubuntu / Python 3.11.16. [Run evidence](https://github.com/Shiyisir/SiteDrainGuard/actions/runs/34111256789).
 
 ## 许可与致谢 / License and attribution
 

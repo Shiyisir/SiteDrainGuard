@@ -14,3 +14,5 @@
 - 独立项目 Git main 已初始化；暂存范围无缓存、仿真临时输出或秘密值。发布文档身份字段已填写；hosted CI 尚待执行。
 
 - 公开仓库 https://github.com/Shiyisir/SiteDrainGuard 已创建；初始 commit 4f8035e1768118a9f4abb7d8f70e234e516a39d6。GitHub 因缺少 workflow scope 拒绝 push；Actions 列表为空，未 tag/Release。
+
+- 用户已批准仅新增 workflow scope，认证成功；main 推送成功。Hosted CI 34111256789 全绿，Ubuntu / Python 3.11.16，19 tests、85% coverage、真实 Heavy 与 Hybrid audit PASS。发布文档已更新 READY，接下来只对通过 CI 的干净提交创建 tag/Release。

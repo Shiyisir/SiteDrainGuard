@@ -9,3 +9,5 @@
 - INDEPENDENT_REVIEW.md 初始 SHA256: 50C444CA45C6FB6FDB778287F2EA345EC12B7A6E7484F3F75AD76E7F9A35B2EC。
 
 - 公开仓库 https://github.com/Shiyisir/SiteDrainGuard 已创建；初始 commit 4f8035e1768118a9f4abb7d8f70e234e516a39d6。GitHub 因缺少 workflow scope 拒绝 push；Actions 列表为空，未 tag/Release。
+
+- 用户已批准仅新增 workflow scope，认证成功；main 推送成功。Hosted CI 34111256789 全绿，Ubuntu / Python 3.11.16，19 tests、85% coverage、真实 Heavy 与 Hybrid audit PASS。发布文档已更新 READY，接下来只对通过 CI 的干净提交创建 tag/Release。

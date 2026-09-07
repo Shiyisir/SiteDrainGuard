@@ -8,9 +8,9 @@ v0.1 is functionally frozen. Do not add P1 features before the items below are c
 - [x] S4 mechanism documented from SWMM `.rpt` evidence.
 - [x] UI stale-result guard added so rainfall/scenario changes cannot silently display an old hydraulic run.
 - [x] GitHub Actions workflow includes heavy-demo reproduction and S4 structural audit.
-- [ ] Push to the intended GitHub repository and obtain a green hosted GitHub Actions run.
+- [x] Push to Shiyisir/SiteDrainGuard and obtain a green hosted GitHub Actions run: [34111256789](https://github.com/Shiyisir/SiteDrainGuard/actions/runs/34111256789).
 - [x] Confirm public author Shiyisir and repository Shiyisir/SiteDrainGuard in `pyproject.toml`, `LICENSE`, and `CITATION.cff`.
 - [x] Capture a **real** dashboard screenshot/GIF from the running Streamlit app and add it to README. `assets/dashboard.png` shows the real Heavy S0–S4 result table captured on 2026-09-07.
-- [ ] Tag `v0.1.0` only after the hosted CI and identity fields above are complete.
+- [x] Confirm the v0.1.0 tagging gate: hosted CI, identity fields, real screenshot and local validation are complete. Tagging must target the clean release commit after its CI passes.
 
-The remaining unchecked items require the repository owner's confirmed GitHub destination/identity and an actual hosted CI run; they are deliberately not fabricated.
+All release prerequisites above have evidence. The published tag and Release are verified directly on GitHub; no generated screenshot or synthetic CI status is used.

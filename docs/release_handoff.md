@@ -1,6 +1,6 @@
 # v0.1.0 发布交接
 
-日期：2026-09-07。当前状态 **PARTIAL**：本地验证、真实截图、作者字段和双语 README 已完成；远端权限阻止 push。
+日期：2026-09-07。当前状态 **READY**：本地验证、真实截图、作者字段、双语 README 及 hosted CI 已完成。
 
 ## 已验证
 
@@ -12,13 +12,13 @@
 - 暂存文件不包含环境、缓存、coverage、SWMM 临时文件；秘密值模式扫描无命中。
 - INDEPENDENT_REVIEW.md 原文未变，SHA256 为 50C444CA45C6FB6FDB778287F2EA345EC12B7A6E7484F3F75AD76E7F9A35B2EC。
 
-## GitHub 阻塞
+## GitHub 发布证据
 
 公开仓库：https://github.com/Shiyisir/SiteDrainGuard 。用户已授权创建、push 和满足门槛后的 Release。
 
-首次 push 被 GitHub 拒绝：OAuth App 无 workflow scope，不能创建或更新 .github/workflows/ci.yml。远端无已发布分支，Actions 列表为空，未创建 tag/Release。
+用户授权仅新增 workflow scope，原 push 阻塞已解决。[Hosted CI 34111256789](https://github.com/Shiyisir/SiteDrainGuard/actions/runs/34111256789) 对 `fd3cf67319c151759fffc5ee42905969cf6f9623` 的 lint/test 全部通过：Ubuntu 24.04 / Python 3.11.16，19 tests，85% coverage，真实 SWMM、Heavy S0–S4 和 Hybrid audit PASS。
 
-需要用户同意补充 GitHub CLI workflow 权限并完成 GitHub 授权。不能删掉工作流绕过。之后重试 push main，读取真实 CI 结果，绿色后才更新 READY 并发布。
+发布目标：[v0.1.0](https://github.com/Shiyisir/SiteDrainGuard/releases/tag/v0.1.0)。最终 tag 必须指向通过 CI 的干净发布提交；使用 `git rev-parse v0.1.0` 可解析准确 SHA。没有现场率定或工程设计声明。
 
 ## 本次变更文件（相对网页端更新包）
 
@@ -33,5 +33,6 @@
 - docs/SiteDrainGuard_DEVELOPMENT_SPEC.md、docs/SiteDrainGuard_CODEX_PROMPT.md：恢复原项目事实源；主规格只清理 Markdown 行尾空格。
 - docs/development_log.md、docs/release_handoff.md：收尾过程及交接证据。
 - task_plan.md、findings.md、progress.md：发布计划、发现和执行记录。
+- docs/resume_claims.md、docs/evidence/hosted_ci.json：hosted CI 实证与可以使用的测试表述。
 
 基础模型、src 下水力逻辑、独立审查文档和现有 CI 工作流未修改。

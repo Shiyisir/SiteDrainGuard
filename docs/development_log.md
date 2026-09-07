@@ -30,3 +30,9 @@
 - Added report-derived evidence plots and `docs/hybrid_synergy.md`; no generated/mock dashboard screenshot was created.
 - Clarified that the current Rational Method comparison is a quantity warning against the constrained outfall peak, not calibration or proof of SWMM correctness.
 - Hosted GitHub Actions could not be triggered in this review environment because no authenticated repository write/push action or remote repository was available. The review therefore preserves `PARTIAL` for the external CI gate.
+
+## 2026-09-07 — Hosted CI passed
+
+- Added only the user-authorized workflow scope and successfully pushed main to Shiyisir/SiteDrainGuard. Existing scopes were preserved.
+- Hosted run 34111256789 passed all lint/test steps on Ubuntu 24.04 / Python 3.11.16. Real SWMM 5.2.4, 19 tests, 85% coverage, Heavy S0–S4 and Hybrid audit matched the verified baseline.
+- Updated bilingual README badge and release status, audit, environment, resume claims and machine-readable CI evidence. No simulation code or workflow changed.
