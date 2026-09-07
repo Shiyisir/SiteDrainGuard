@@ -24,3 +24,12 @@ coverage.xml
 # Local agent instructions and collaboration context
 /AGENTS.md
 /CONTEXT.md
+/task_plan.md
+/findings.md
+/progress.md
+
+# Internal development specifications and handoff notes
+/docs/SiteDrainGuard_CODEX_PROMPT.md
+/docs/SiteDrainGuard_DEVELOPMENT_SPEC.md
+/docs/development_log.md
+/docs/release_handoff.md
