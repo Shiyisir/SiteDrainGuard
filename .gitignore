@@ -22,8 +22,8 @@ coverage.xml
 *.key
 
 # Local agent instructions and collaboration context
-/AGENTS.md
-/CONTEXT.md
+**/AGENTS.md
+**/CONTEXT.md
 /task_plan.md
 /findings.md
 /progress.md
