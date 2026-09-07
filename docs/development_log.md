@@ -36,3 +36,9 @@
 - Added only the user-authorized workflow scope and successfully pushed main to Shiyisir/SiteDrainGuard. Existing scopes were preserved.
 - Hosted run 34111256789 passed all lint/test steps on Ubuntu 24.04 / Python 3.11.16. Real SWMM 5.2.4, 19 tests, 85% coverage, Heavy S0–S4 and Hybrid audit matched the verified baseline.
 - Updated bilingual README badge and release status, audit, environment, resume claims and machine-readable CI evidence. No simulation code or workflow changed.
+
+## 2026-09-07 — Dashboard screenshot correction
+
+- Replaced the narrow, mid-label screenshot with a fresh Chrome capture after a real Heavy S0–S4 analysis. The full baseline KPI labels and all five comparison rows are visible.
+- Captured a 1100 × 450 result region at native browser size. The screenshot transport returned JPEG bytes, so the file was encoded as an actual PNG without resizing, sharpening, or changing any displayed data.
+- Visually checked the saved image, verified PNG chunk checksums and the existing README reference. No application code or hydraulic input changed; the published v0.1.0 tag remains immutable.
