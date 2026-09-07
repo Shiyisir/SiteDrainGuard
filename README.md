@@ -135,7 +135,6 @@ tests/                         单元与真实引擎测试 / unit and integratio
 scripts/                       验证和批处理 / validation, batch CLI and S4 audit
 docs/                          方法与证据 / methodology, evidence and limits
 assets/                        真实截图与报告图 / real screenshot and evidence plots
-AGENTS.md / CONTEXT.md          AI 规则与业务背景 / rules and business context
 AUDIT_REPORT.md                 基于证据的自审计 / evidence-based self-audit
 ```
 
