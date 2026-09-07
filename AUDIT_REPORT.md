@@ -131,9 +131,9 @@ No unresolved v0.1 implementation or hosted-CI blocker remains. Author and repos
 
 The hosted runner emitted a non-failing Node.js runtime deprecation notice for existing upstream Actions. No workflow steps were removed or disabled; all required checks passed.
 
-## 12. Claims allowed in README/resume
+## 12. Claims supported by the public project
 
-The project supports claims about Python/PySWMM/SWMM implementation, five real synthetic scenarios, controlled mutation manifests, metrics, continuity QA, Rational Method sanity checking, rainfall sensitivity, local test counts and reproducible CLI/dashboard workflow. See `docs/resume_claims.md`.
+The project supports claims about Python/PySWMM/SWMM implementation, five real synthetic scenarios, controlled mutation manifests, metrics, continuity QA, Rational Method sanity checking, rainfall sensitivity, local test counts and reproducible CLI/dashboard workflow.
 
 ## 13. Claims NOT supported
 

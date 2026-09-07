@@ -22,14 +22,19 @@ coverage.xml
 *.key
 
 # Local agent instructions and collaboration context
-**/AGENTS.md
-**/CONTEXT.md
+/AGENTS.md
+/CONTEXT.md
 /task_plan.md
 /findings.md
 /progress.md
 
 # Internal development specifications and handoff notes
+/SiteDrainGuard_CODEX_PROMPT.md
+/SiteDrainGuard_DEVELOPMENT_SPEC.md
 /docs/SiteDrainGuard_CODEX_PROMPT.md
 /docs/SiteDrainGuard_DEVELOPMENT_SPEC.md
 /docs/development_log.md
 /docs/release_handoff.md
+/docs/resume_claims.md
+/RELEASE_CHECKLIST.md
+/INDEPENDENT_REVIEW.md
