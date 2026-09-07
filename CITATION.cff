@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+title: "SiteDrainGuard"
+message: "If this prototype supports your work, please cite the project and its upstream dependencies."
+type: software
+authors:
+  - name: "Shiyisir"
+version: "0.1.0"
+date-released: "2026-09-07"
+license: MIT
+repository-code: "https://github.com/Shiyisir/SiteDrainGuard"
+references:
+  - type: article
+    title: "PySWMM: a Python package for interacting with the Stormwater Management Model"
+    journal: "Journal of Open Source Software"
+    year: 2020
+    doi: 10.21105/joss.02294
+  - type: software
+    title: "Storm Water Management Model (SWMM)"
+    authors:
+      - name: "U.S. Environmental Protection Agency"
+    url: "https://github.com/USEPA/Stormwater-Management-Model"

@@ -1,0 +1,15 @@
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+DEMO_DIR = PROJECT_ROOT / "data" / "demo_site"
+BASE_MODEL_PATH = DEMO_DIR / "base_model.inp"
+MODEL_METADATA_PATH = DEMO_DIR / "site_metadata.yaml"
+COSTS_PATH = DEMO_DIR / "costs.yaml"
+ARTIFACTS_DIR = PROJECT_ROOT / "artifacts"
+
+CONTINUITY_PASS_PCT = 2.0
+CONTINUITY_WARNING_PCT = 5.0
+RISK_FLOOD_DURATION_H = 0.25
+RISK_DEPTH_RATIO_WARNING = 0.6
+RISK_DEPTH_RATIO_ORANGE = 0.8
+RISK_DEPTH_RATIO_RED = 1.0

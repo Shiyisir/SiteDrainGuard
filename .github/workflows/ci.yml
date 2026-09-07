@@ -1,0 +1,52 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e ".[dev]"
+      - run: ruff check .
+      - run: ruff format --check .
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e ".[dev]"
+      - run: python scripts/validate_environment.py
+      - run: pytest --cov=src/sitedrainguard --cov-report=term-missing
+      - name: Reproduce verified heavy demo
+        run: python scripts/run_demo_batch.py --rainfall heavy
+      - name: Audit S4 isolation and hybrid mechanism
+        run: python scripts/audit_hybrid_synergy.py
+      - name: Upload SWMM diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: swmm-diagnostics
+          path: |
+            artifacts/demo_results.json
+            artifacts/hybrid_audit.json
+            artifacts/runs/**/model.rpt
+          if-no-files-found: ignore

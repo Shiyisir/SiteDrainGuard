@@ -1,0 +1,166 @@
+{
+  "status": "PASS",
+  "manifest_union": {
+    "s4_equals_s1_union_s2_union_s3": true,
+    "extra_mutations": 0,
+    "missing_mutations": 0
+  },
+  "rainfall_identical_across_scenarios": true,
+  "semantic_inp_changes_match_manifest": true,
+  "semantic_changes": {
+    "S0": [],
+    "S1": [
+      [
+        "PUMPS",
+        "P01",
+        0,
+        3,
+        "PUMP_OFF",
+        "PUMP_ASSIST"
+      ]
+    ],
+    "S2": [
+      [
+        "XSECTIONS",
+        "C05",
+        0,
+        2,
+        "0.20",
+        "0.45"
+      ]
+    ],
+    "S3": [
+      [
+        "CURVES",
+        "STORAGE_CURVE",
+        0,
+        3,
+        "25.0",
+        "60.0"
+      ],
+      [
+        "CURVES",
+        "STORAGE_CURVE",
+        1,
+        2,
+        "125.0",
+        "300.0"
+      ]
+    ],
+    "S4": [
+      [
+        "CURVES",
+        "STORAGE_CURVE",
+        0,
+        3,
+        "25.0",
+        "60.0"
+      ],
+      [
+        "CURVES",
+        "STORAGE_CURVE",
+        1,
+        2,
+        "125.0",
+        "300.0"
+      ],
+      [
+        "PUMPS",
+        "P01",
+        0,
+        3,
+        "PUMP_OFF",
+        "PUMP_ASSIST"
+      ],
+      [
+        "XSECTIONS",
+        "C05",
+        0,
+        2,
+        "0.20",
+        "0.45"
+      ]
+    ]
+  },
+  "flood_volume_m3": {
+    "S0": 3338.2044841159386,
+    "S1": 3320.329987119188,
+    "S2": 3321.331002373037,
+    "S3": 3306.33080894214,
+    "S4": 2730.552552913612
+  },
+  "flood_reduction_m3": {
+    "S0": 0.0,
+    "S1": 17.874496996750622,
+    "S2": 16.87348174290173,
+    "S3": 31.8736751737988,
+    "S4": 607.6519312023265
+  },
+  "sum_individual_reduction_m3": 66.62165391345115,
+  "hybrid_reduction_m3": 607.6519312023265,
+  "interaction_excess_m3": 541.0302772888754,
+  "j05_reduction_m3": 599.0,
+  "j05_share_of_hybrid_reduction_pct": 98.57616988310932,
+  "mechanism": {
+    "S0": {
+      "j05_flood_hours": 2.12,
+      "j05_peak_flood_cms": 0.661,
+      "j05_flood_volume_m3": 1065.0,
+      "storage_max_volume_m3": 117.0,
+      "storage_max_outflow_cms": 0.0,
+      "outfall_max_flow_cms": 0.0,
+      "outfall_total_volume_m3": 1.0,
+      "c05_max_flow_cms": 0.04,
+      "p01_max_flow_cms": 0.0,
+      "pump_total_volume_m3": 1.0
+    },
+    "S1": {
+      "j05_flood_hours": 0.97,
+      "j05_peak_flood_cms": 0.664,
+      "j05_flood_volume_m3": 1047.0,
+      "storage_max_volume_m3": 0.0,
+      "storage_max_outflow_cms": 0.028,
+      "outfall_max_flow_cms": 0.028,
+      "outfall_total_volume_m3": 197.0,
+      "c05_max_flow_cms": 0.028,
+      "p01_max_flow_cms": 0.028,
+      "pump_total_volume_m3": 197.0
+    },
+    "S2": {
+      "j05_flood_hours": 2.7,
+      "j05_peak_flood_cms": 0.667,
+      "j05_flood_volume_m3": 1060.0,
+      "storage_max_volume_m3": 118.0,
+      "storage_max_outflow_cms": 0.017,
+      "outfall_max_flow_cms": 0.0,
+      "outfall_total_volume_m3": 1.0,
+      "c05_max_flow_cms": 0.283,
+      "p01_max_flow_cms": 0.0,
+      "pump_total_volume_m3": 1.0
+    },
+    "S3": {
+      "j05_flood_hours": 0.99,
+      "j05_peak_flood_cms": 0.657,
+      "j05_flood_volume_m3": 1033.0,
+      "storage_max_volume_m3": 174.0,
+      "storage_max_outflow_cms": 0.0,
+      "outfall_max_flow_cms": 0.0,
+      "outfall_total_volume_m3": 1.0,
+      "c05_max_flow_cms": 0.04,
+      "p01_max_flow_cms": 0.0,
+      "pump_total_volume_m3": 1.0
+    },
+    "S4": {
+      "j05_flood_hours": 0.61,
+      "j05_peak_flood_cms": 0.421,
+      "j05_flood_volume_m3": 466.0,
+      "storage_max_volume_m3": 148.0,
+      "storage_max_outflow_cms": 0.18,
+      "outfall_max_flow_cms": 0.18,
+      "outfall_total_volume_m3": 786.0,
+      "c05_max_flow_cms": 0.323,
+      "p01_max_flow_cms": 0.18,
+      "pump_total_volume_m3": 786.0
+    }
+  }
+}

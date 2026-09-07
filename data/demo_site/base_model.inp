@@ -1,0 +1,176 @@
+[TITLE]
+;; SiteDrainGuard synthetic construction-site demonstration model
+;; All geometry and facilities are synthetic and not engineering recommendations.
+
+[OPTIONS]
+FLOW_UNITS           CMS
+INFILTRATION         HORTON
+FLOW_ROUTING         DYNWAVE
+LINK_OFFSETS         DEPTH
+MIN_SLOPE            0
+ALLOW_PONDING        NO
+SKIP_STEADY_STATE    NO
+START_DATE           01/01/2024
+START_TIME           00:00:00
+REPORT_START_DATE    01/01/2024
+REPORT_START_TIME    00:00:00
+END_DATE             01/01/2024
+END_TIME             03:00:00
+SWEEP_START          01/01
+SWEEP_END            12/31
+DRY_DAYS             0
+REPORT_STEP          00:05:00
+WET_STEP             00:01:00
+DRY_STEP             01:00:00
+ROUTING_STEP         00:00:10
+VARIABLE_STEP        0.0
+LENGTHENING_STEP     0
+INERTIAL_DAMPING     PARTIAL
+NORMAL_FLOW_LIMITED  BOTH
+FORCE_MAIN_EQUATION  H-W
+LINK_OFFSETS         DEPTH
+MIN_SURFAREA         1.14
+
+[RAINGAGES]
+;;Name           Format    Interval SCF      Source
+;;-------------- --------- -------- -------- ----------------
+RG01             INTENSITY 0:05     1.0      TIMESERIES RAIN_DEMO
+
+[SUBCATCHMENTS]
+;;Name           Raingage         Outlet      Area     %Imperv  Width    %Slope   CurbLen
+;;-------------- ---------------- ----------- -------- -------- -------- -------- --------
+S01              RG01             J01         1.20     85       140      1.0      0
+S02              RG01             J02         1.10     82       135      1.1      0
+S03              RG01             J03         1.35     88       150      0.9      0
+S04              RG01             J04         1.25     84       145      1.0      0
+S05              RG01             J05         1.15     80       130      1.2      0
+S06              RG01             J06         1.00     86       120      0.8      0
+S07              RG01             J07         1.30     83       145      1.0      0
+S08              RG01             J08         1.10     81       135      1.1      0
+
+[SUBAREAS]
+;;Subcatchment   N-Imperv   N-Perv     S-Imperv  S-Perv    PctZero  RouteTo  PctRouted
+;;-------------- ---------- ---------- --------- --------- -------- -------- ---------
+S01              0.015      0.25       0.02      0.10      25       OUTLET
+S02              0.015      0.25       0.02      0.10      25       OUTLET
+S03              0.015      0.25       0.02      0.10      25       OUTLET
+S04              0.015      0.25       0.02      0.10      25       OUTLET
+S05              0.015      0.25       0.02      0.10      25       OUTLET
+S06              0.015      0.25       0.02      0.10      25       OUTLET
+S07              0.015      0.25       0.02      0.10      25       OUTLET
+S08              0.015      0.25       0.02      0.10      25       OUTLET
+
+[INFILTRATION]
+;;Subcatchment   MaxRate    MinRate    Decay     DryTime   MaxInfil
+;;-------------- ---------- ---------- --------- --------- ---------
+S01              75         5          4.0       7         0
+S02              75         5          4.0       7         0
+S03              75         5          4.0       7         0
+S04              75         5          4.0       7         0
+S05              75         5          4.0       7         0
+S06              75         5          4.0       7         0
+S07              75         5          4.0       7         0
+S08              75         5          4.0       7         0
+
+[JUNCTIONS]
+;;Name           Elevation  MaxDepth   InitDepth  SurDepth   Aponded
+;;-------------- ---------- ---------- ---------- ---------- ----------
+J01              10.0       1.5        0          0          0
+J02              9.5        1.5        0          0          0
+J03              9.0        1.5        0          0          0
+J04              8.5        1.5        0          0          0
+J05              8.0        1.5        0          0          0
+J06              9.7        1.5        0          0          0
+J07              9.2        1.5        0          0          0
+J08              8.7        1.5        0          0          0
+
+[STORAGE]
+;;Name           Elev.      MaxDepth   InitDepth  Shape      Curve Name/Params
+;;-------------- ---------- ---------- ---------- ---------- ----------------
+ST01             7.5        3.0        0          TABULAR    STORAGE_CURVE
+
+[OUTFALLS]
+;;Name           Elevation  Type       Stage Data       Gated Route To
+;;-------------- ---------- --------- --------------- ----- ---------
+O01              7.0        FREE
+
+[CONDUITS]
+;;Name           From Node  To Node    Length     Roughness  InOffset   OutOffset  InitFlow  MaxFlow
+;;-------------- ---------- ---------  ---------- ---------- ---------- ---------- ---------- ----------
+C01              J01        J02        80         0.018      0          0          0          0
+C02              J02        J03        80         0.018      0          0          0          0
+C03              J03        J04        80         0.018      0          0          0          0
+C04              J04        J05        80         0.018      0          0          0          0
+C05              J05        ST01       70         0.018      0          0          0          0
+C07              J06        J03        60         0.018      0          0          0          0
+C08              J07        J04        60         0.018      0          0          0          0
+C09              J08        J05        60         0.018      0          0          0          0
+
+[XSECTIONS]
+;;Link           Shape      Geom1      Geom2      Geom3      Geom4      Barrels   Culvert
+;;-------------- ---------- ---------- ---------- ---------- ---------- --------- --------
+C01              CIRCULAR   0.45       0          0          0          1
+C02              CIRCULAR   0.45       0          0          0          1
+C03              CIRCULAR   0.45       0          0          0          1
+C04              CIRCULAR   0.45       0          0          0          1
+C05              CIRCULAR   0.20       0          0          0          1
+C07              CIRCULAR   0.40       0          0          0          1
+C08              CIRCULAR   0.40       0          0          0          1
+C09              CIRCULAR   0.40       0          0          0          1
+
+[PUMPS]
+;;Name           From Node  To Node    Pump Curve  Status     Startup  Shutoff
+;;-------------- ---------- ---------  ----------  ---------  -------  -------
+P01              ST01       O01        PUMP_OFF    ON         0        0
+
+[CURVES]
+;;Name           Type       X-Value    Y-Value
+;;-------------- ---------- ---------- ----------
+PUMP_OFF         PUMP1      0.0        0.0001
+PUMP_OFF         3.0        0.0001
+PUMP_ASSIST      PUMP1      0.0        0.18
+PUMP_ASSIST      3.0        0.18
+STORAGE_CURVE    STORAGE    0.0        25.0
+STORAGE_CURVE    3.0        125.0
+
+[COORDINATES]
+;;Node           X-Coord    Y-Coord
+;;-------------- ---------- ----------
+J01              0          80
+J02              100        80
+J03              200        80
+J04              300        80
+J05              400        80
+J06              100        160
+J07              250        160
+J08              400        160
+ST01             500        80
+O01              600        80
+
+[TIMESERIES]
+;;Name           Date       Time       Value
+;;-------------- ---------- ---------- ----------
+RAIN_DEMO       00:00     0
+RAIN_DEMO       00:05     0
+RAIN_DEMO       00:10     15
+RAIN_DEMO       00:15     35
+RAIN_DEMO       00:20     65
+RAIN_DEMO       00:25     95
+RAIN_DEMO       00:30     65
+RAIN_DEMO       00:35     35
+RAIN_DEMO       00:40     15
+RAIN_DEMO       00:45     0
+
+[REPORT]
+INPUT             YES
+CONTROLS          YES
+SUBCATCHMENTS     ALL
+NODES             ALL
+LINKS             ALL
+CONTINUITY        YES
+AVERAGES          YES
+INPUT             YES
+
+[TAGS]
+Project           SiteDrainGuard
+DataStatus        Synthetic demonstration only

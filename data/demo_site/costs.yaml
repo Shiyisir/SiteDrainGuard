@@ -1,0 +1,7 @@
+currency: CNY
+assumption_only: true
+pump_fixed_cost: 12000
+pipe_unit_cost_per_m: 800
+pipe_affected_length_m: 70
+storage_unit_cost_per_m3: 300
+added_storage_volume_m3: 200
