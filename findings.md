@@ -7,3 +7,5 @@
 - .gitignore 已覆盖 .venv、Python/Ruff/pytest 缓存、.coverage、htmlcov、artifacts 和 demo_site 的 out/rpt；发布前还需检查完整暂存文件列表。
 - CI 文件已有 Ruff、pytest、真实引擎环境校验、Heavy batch 和 Hybrid audit；本地七条命令均通过，待真实 hosted CI。
 - INDEPENDENT_REVIEW.md 初始 SHA256: 50C444CA45C6FB6FDB778287F2EA345EC12B7A6E7484F3F75AD76E7F9A35B2EC。
+
+- 公开仓库 https://github.com/Shiyisir/SiteDrainGuard 已创建；初始 commit 4f8035e1768118a9f4abb7d8f70e234e516a39d6。GitHub 因缺少 workflow scope 拒绝 push；Actions 列表为空，未 tag/Release。

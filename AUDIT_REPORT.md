@@ -4,7 +4,7 @@
 
 **PASS for the local v0.1 implementation; PARTIAL for external release gates.**
 
-The application, real-engine calculations, tests, batch workflow, dashboard startup and documentation are complete and locally verified. Post-review local validation was rerun on 2026-09-07. GitHub-hosted CI has not been executed: the project now has its own Git repository, but the owner has not yet confirmed the remote destination and public identity. Local equivalents pass; final release status remains PARTIAL.
+The application, real-engine calculations, tests, batch workflow, dashboard startup and documentation are complete and locally verified. Post-review local validation was rerun on 2026-09-07. GitHub-hosted CI has not been executed: the project now has its own Git repository, but the confirmed public repository Shiyisir/SiteDrainGuard exists, but GitHub rejected the push because the CLI OAuth authorization lacks workflow scope. Local equivalents pass; final release status remains PARTIAL.
 
 ## 2. Environment actually tested
 
@@ -20,7 +20,7 @@ The application, real-engine calculations, tests, batch workflow, dashboard star
 - Plotly: 6.9.0
 - Ruff: 0.16.6
 
-Evidence: `python scripts/validate_environment.py`, `uv sync --locked --extra dev`, and `docs/environment.md`.
+Evidence: the final seven command logs under ignored `artifacts/release/`, `uv lock --check --offline`, and `docs/environment.md`.
 
 ## 3. Requirement traceability
 
@@ -45,27 +45,23 @@ Evidence: `python scripts/validate_environment.py`, `uv sync --locked --extra de
 
 ## 4. Commands executed
 
-Installation commands below describe the original audit. The final post-review session reused that environment; it did not claim a fresh installation. All seven requested validation commands were rerun. Ruff initially found two formatting-only differences in app.py and scripts/audit_hybrid_synergy.py; these were formatted and Ruff, pytest and the Hybrid audit passed again. No hydraulic logic or input changed.
-
-| Post-review command | Result |
-|---|---|
-| `python scripts/audit_hybrid_synergy.py` | PASS; union exact, extra=0, missing=0, rainfall identical, semantic changes match manifest |
-
+The post-review session reused the original project's existing Python environment against the current updated source. It did not claim a fresh installation. Commands were invoked using that interpreter (including `python -m ruff` and `python -m pytest`). Every command below returned exit code 0 in the final run; individual logs are retained under ignored `artifacts/release/`.
 
 | Command | Result |
 |---|---|
-| `uv venv --python 3.11 .venv` | PASS; Python 3.11.12 |
-| `uv pip install --python .venv\Scripts\python.exe -e ".[dev]"` | PASS |
-| `uv sync --locked --extra dev` | PASS; lockfile consistent |
-| `.venv\Scripts\ruff.exe check .` | PASS |
-| `.venv\Scripts\ruff.exe format --check .` | PASS |
-| `.venv\Scripts\pytest.exe --cov=src/sitedrainguard --cov-report=term-missing -q` | PASS; 19 passed, 85% total coverage |
-| `.venv\Scripts\python.exe scripts\validate_environment.py` | PASS; real engine 5.2.4 |
-| `.venv\Scripts\python.exe scripts\run_demo_batch.py --rainfall moderate` | PASS; S0–S4 real runs |
-| `.venv\Scripts\python.exe scripts\run_demo_batch.py --rainfall heavy` | PASS; S0–S4 real runs |
-| `.venv\Scripts\python.exe -m streamlit run app.py --server.headless true --server.port 8765` | PASS; `/_stcore/health` returned HTTP 200 |
-| `git status`, `git diff --check`, staged-file checks | Project-local repository initialized; final staging check recorded in release handoff |
-| `rg` TODO/FIXME/HACK and secret-pattern scan | PASS for application/docs scope; no TODO/FIXME/HACK or secret values found |
+| `ruff check .` | PASS |
+| `ruff format --check .` | PASS; 72 files formatted |
+| `pytest --cov=src/sitedrainguard --cov-report=term-missing` | PASS; 19 passed, 85% coverage |
+| `python scripts/validate_environment.py` | PASS; real SWMM 5.2.4, CMS/SI |
+| `python scripts/run_demo_batch.py --rainfall moderate` | PASS; S0–S4 |
+| `python scripts/run_demo_batch.py --rainfall heavy` | PASS; S0–S4 |
+| `python scripts/audit_hybrid_synergy.py` | PASS; exact union, extra=0, missing=0, rainfall identical, semantic changes match manifest |
+| `uv lock --check --offline` | PASS |
+| Streamlit headless and real Heavy browser analysis | PASS; screenshot in assets/dashboard.png |
+| `git diff --cached --check` and staged-file hygiene | PASS; no environment/cache/SWMM temporary outputs or detected secret values |
+| `git push -u origin main` | REJECTED by GitHub: OAuth authorization lacks workflow scope |
+
+Ruff initially found two formatting-only differences in app.py and scripts/audit_hybrid_synergy.py. These were formatted and the full seven-command validation passed again. No hydraulic logic or input changed.
 
 ## 5. Real SWMM verification
 
@@ -114,7 +110,7 @@ All five scenarios used engine version 5.2.4, CMS/SI units, the same rainfall an
 - No `.env` file, API key, token, password or private project data found in application/docs scan.
 - Base model is copied per run and checksummed.
 - Runtime artifacts and coverage/cache directories are ignored by `.gitignore`.
-- A project-local Git repository was initialized on main; the parent workspace repository was not staged or committed. No remote push has occurred.
+- A project-local Git repository was initialized on main; the parent workspace repository was not staged or committed. The attempted push was rejected; no branch has been published.
 
 ## 10. Known limitations
 
@@ -127,9 +123,11 @@ All five scenarios used engine version 5.2.4, CMS/SI units, the same rainfall an
 
 ## 11. Unresolved issues
 
-1. Confirm the intended GitHub repository, push main and verify the actual hosted GitHub Actions run.
-2. Replace `YOUR_NAME` and the placeholder repository URL in `LICENSE`/`CITATION.cff` before public release.
-3. After hosted CI passes, record its run URL and tested commit, complete the release checklist and create v0.1.0. Local dependency attribution metadata and the real screenshot have been checked.
+1. With user approval, grant the GitHub CLI workflow scope, then push main to https://github.com/Shiyisir/SiteDrainGuard.
+2. Verify actual hosted Actions results and retain the run URL and tested commit. No hosted run currently exists.
+3. Only after hosted CI passes, finalize the checklist and create the v0.1.0 tag and Release. Author fields, bilingual README and the real screenshot are complete.
+
+Local implementation commit: `4f8035e1768118a9f4abb7d8f70e234e516a39d6`. Subsequent documentation-only commits record the push blocker. Use `git rev-parse HEAD` for the current handoff commit.
 
 ## 12. Claims allowed in README/resume
 
@@ -141,4 +139,4 @@ Do not claim real enterprise use, field validation, calibration, design-code com
 
 ## 14. Final recommendation
 
-**Ready for a local v0.1 handoff: yes. Ready for a public v0.1 tag: after the three external hygiene actions in section 11.**
+**Ready for a local v0.1 handoff: yes. Ready for a public v0.1 tag: only after the external gates in section 11 pass.**

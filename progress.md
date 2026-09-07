@@ -12,3 +12,5 @@
 - 浏览器点击 Run analysis 完成 Heavy S0–S4，真实截图写入 assets/dashboard.png。README 已按用户要求改为中英双语。
 - 用户确认作者 Shiyisir，授权创建公开仓库 Shiyisir/SiteDrainGuard。
 - 独立项目 Git main 已初始化；暂存范围无缓存、仿真临时输出或秘密值。发布文档身份字段已填写；hosted CI 尚待执行。
+
+- 公开仓库 https://github.com/Shiyisir/SiteDrainGuard 已创建；初始 commit 4f8035e1768118a9f4abb7d8f70e234e516a39d6。GitHub 因缺少 workflow scope 拒绝 push；Actions 列表为空，未 tag/Release。

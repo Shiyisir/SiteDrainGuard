@@ -1,5 +1,14 @@
 # Development log
 
+## 2026-09-07 — Final release preparation
+
+- Restored project rules, business context and development specifications from the original project archive; retained the independently reviewed code and review text.
+- Reused Python 3.11.12 / PySWMM 2.1.0 / SWMM 5.2.4 and reran all seven release validation commands. Results: 19 tests, 85% coverage, moderate/heavy S0–S4 PASS, exact Hybrid union, identical rainfall, no extra/missing mutations.
+- Applied Ruff formatting to two expressions only; repeated all seven validations successfully. No hydraulic logic or input data changed.
+- Captured the real Heavy result table after clicking Run analysis in Streamlit. Added assets/dashboard.png and a Chinese/English README.
+- Confirmed author Shiyisir and created the authorized public repository Shiyisir/SiteDrainGuard. Initialized a project-local main branch, isolated from the parent workspace repository.
+- GitHub rejected the first push because the active CLI OAuth authorization lacks workflow scope. No hosted Actions run, tag or Release is claimed. The existing CI workflow remains intact.
+
 ## 2026-09-07
 
 - Read the full project prompt and development specification before implementation.

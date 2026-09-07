@@ -35,6 +35,8 @@
 
 2026-09-07：当前目录为网页端独立审查后的 v0.1 更新版；同级 `project-006-site-drain-guard_original` 保存原项目。本次从原项目恢复规则及两份规格，保留独立审查更新。功能已冻结，正在执行最终本地验证、真实截图及 GitHub 发布收尾；仅 hosted CI 实际绿色且发布条件全部满足后标记 READY。历史本地验证不能替代本次验证。
 
+本次七条本地验证已通过（19 tests、85% coverage），Heavy S0–S4 及 Hybrid audit 与基准一致；真实截图和双语 README 已完成。作者与公开仓库已确认是 Shiyisir / Shiyisir/SiteDrainGuard。首次 push 被 GitHub 拒绝，原因是当前 CLI OAuth 授权缺少 workflow scope；等待用户允许补充权限，hosted CI 和 Release 未执行。
+
 ## 信息边界
 
 - 所有内置数据必须是 synthetic，不对应真实项目。
